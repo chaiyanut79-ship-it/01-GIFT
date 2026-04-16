@@ -1,0 +1,79 @@
+body {
+    background: linear-gradient(-45deg, #000000, #1a001a, #2d0015, #000000);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.book {
+    width: 85%;
+    max-width: 400px;
+    background: rgba(20, 20, 20, 0.85); 
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    padding: 40px 20px;
+    box-shadow: 0 0 40px rgba(255, 105, 180, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.page {
+    display: none;
+    line-height: 1.8;
+    font-size: 19px;
+    min-height: 120px;
+}
+
+.page.active {
+    display: block;
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+button {
+    padding: 12px 30px;
+    margin-top: 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    background: linear-gradient(45deg, #FF69B4, #DA70D6);
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.hb-text {
+    color: #FF69B4;
+    font-size: 26px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 15px;
+    text-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+}
