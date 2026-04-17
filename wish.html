@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wish - Happy Birthday</title>
+    <style>
+        /* --- CSS Section --- */
+        body {
+            background: linear-gradient(-45deg, #000000, #1a001a, #2d0015, #000000);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .book {
+            width: 85%;
+            max-width: 400px;
+            background: rgba(20, 20, 20, 0.85); 
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 40px 20px;
+            box-shadow: 0 0 40px rgba(255, 105, 180, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .page {
+            display: none; /* ซ่อนหน้าปกติ */
+            line-height: 1.8;
+            font-size: 19px;
+            width: 100%;
+        }
+
+        .page.active {
+            display: flex; /* แสดงเมื่อ active */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        button {
+            padding: 12px 30px;
+            margin-top: 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            background: linear-gradient(45deg, #FF69B4, #DA70D6);
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .hb-text {
+            color: #FF69B4;
+            font-size: 26px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+        }
+
+        small {
+            margin-top: 15px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="book">
+        <div class="page active">สวัสดีคั้บ <br><button onclick="next()">ถัดไป</button></div>
+        <div class="page">หน้า 2 แล้วนะ<br><button onclick="next()">ถัดไป</button></div>
+        <div class="page">อีกยาวอยู่แต่ระดับพี่ไม่น่ายาก<br><button onclick="next()">ถัดไป</button></div>
+        <div class="page">4<br><button onclick="next()">ถัดไป</button></div>
+        <div class="page">5 แล้วนะ<br><button onclick="next()">ถัดไป</button></div>
+        <div class="page">ใกล้ละรึป่าว<br><button onclick="next()">ถัดไป</button></div>
+        <div class="page">อาจจะ...<br><button onclick="next()">ถัดไป</button></div>
+        <div class="page">อีกหน่อยยย<br><button onclick="next()">ถัดไป</button></div>
+        <div class="page">นิดหนึ่งละะ<br><button onclick="next()">ถัดไป</button></div>
+        <div class="page">แต่ใกล้แล้วจริงไหม?<br><button onclick="next()">ถัดไป</button></div>    
+        <div class="page">ไม่รู้สิ 555<br><button onclick="next()">ถัดไป</button></div>
+        <div class="page">แต่กดต่อนะ ถือว่าขอ<br><button onclick="next()">ถัดไป</button></div>
+        <div class="page">ไม่น่ายากเกินไปสำหรับพี่<br><button onclick="next()">ถัดไป</button></div>
+        <div class="page">ถึงแล้ว! เอ่อ... ยังไม่ใช่<br><button onclick="next()">ถัดไป</button></div>
+        
+        <div class="page"> 
+            <span class="hb-text">Happy Birthday 🎂🎉</span>
+            <div>อายุครบ 17 คั้บพี่ มีความสุขมากๆ</div>
+            <div>ขอให้พี่พบเจอแต่สิ่งดีๆ ในชีวิต</div>
+            <div>อยู่ข้างๆ พี่เสมอนะจ๊ะ (ยังต้องการอยู่ไหมอีกเรื่อง 555)</div>
+            <div>หันมาเจอแน่นอน!</div>
+            <small style="color: #aaa;">ปล. อาจจะกิ๊กก๊อกหน่อยนะ แฮ่ 🎉</small>
+        </div>
+    </div>
+
+    <script>
+        /* --- JavaScript Section --- */
+        let current = 0;
+        const pages = document.querySelectorAll(".page");
+
+        function next() {
+            if (current < pages.length - 1) {
+                pages[current].classList.remove("active");
+                current++;
+                pages[current].classList.add("active");
+            }
+        }
+    </script>
+</body>
+</html>
